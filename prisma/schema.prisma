@@ -11,10 +11,12 @@ datasource db {
 }
 
 model Client {
-  id     String @id @default(uuid())
-  name   String
-  adress String
-  phone  String
+  id         String   @id @default(uuid())
+  name       String
+  adress     String
+  phone      String
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
 
   @@map("clients")
 }
