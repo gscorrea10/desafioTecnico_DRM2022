@@ -3,6 +3,7 @@ import { CreateClientUseCase } from "./createClientUseCase";
 
 export class CreateClientController {
   async handle(req: Request, res: Response) {
+    const {id} = req.params;
     const {name, adress, phone} = req.body;
 
     const createClientUseCase = new CreateClientUseCase();
