@@ -11,15 +11,16 @@ const clientRoutes = Router();
 clientRoutes.post("/", createClientController.handle);
 clientRoutes.get("/get", getClientsByNameController.handle);
 clientRoutes.put("/:id", async (req, res) => {
+  const {name,adress,phone} = req.body;
   const { id } = req.params;
   const result = await prisma.client.update({
     where: {
       id: id,
     },
     data: {
-      name: 'name',
-      adress: 'adress',
-      phone: 'phone',
+      name: name,
+      adress: adress,
+      phone: phone,
     },
   });
 
