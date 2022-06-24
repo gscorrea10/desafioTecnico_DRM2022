@@ -8,7 +8,7 @@
 PRAGMA foreign_keys=OFF;
 CREATE TABLE "new_clients" (
     "id" TEXT NOT NULL PRIMARY KEY,
-    "name" TEXT NOT NULL,
+    "name" TEXT NOT NULL COLLATE NOCASE, 
     "adress" TEXT NOT NULL,
     "phone" TEXT NOT NULL,
     "created_at" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,

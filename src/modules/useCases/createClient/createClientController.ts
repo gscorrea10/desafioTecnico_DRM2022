@@ -10,4 +10,5 @@ export class CreateClientController {
     const result = await createClientUseCase.execute({name, adress, phone});
     return res.status(201).json(result);
   }
+  
 }
