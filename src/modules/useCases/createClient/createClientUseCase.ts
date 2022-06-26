@@ -1,9 +1,9 @@
 import { Client } from "@prisma/client";
-import { CreateClientDTO } from "../../dto/CreateClientDTO";
+import { CreateClientData } from "../../types/ClientData";
 import { prisma } from "../../../prisma";
 
 export class CreateClientUseCase {
-  async execute ({ name, adress, phone }:  CreateClientDTO): Promise<Client> {
+  async execute ({ name, adress, phone }:  CreateClientData): Promise<Client> {
 
     const client = await prisma.client.create({
       data: {
@@ -12,8 +12,6 @@ export class CreateClientUseCase {
         phone,
       },
     });
-
     return client;
-
   }
 }

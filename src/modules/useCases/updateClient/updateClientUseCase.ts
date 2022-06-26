@@ -1,12 +1,13 @@
 import { Client } from "@prisma/client";
 import { prisma } from "../../../prisma";
-import { CreateClientDTO } from "../../dto/CreateClientDTO";
+import { UpdateClientData} from "../../types/ClientData";
 
 export class UpdateClientUseCase {
-  async execute({name,adress,phone}: CreateClientDTO): Promise<Client>{
+  
+  async execute({ id, name, adress, phone }:  UpdateClientData):Promise<Client>{
     const clients = await prisma.client.update({
       where: {
-        id: "id",
+        id,
       },
       data: {
         name,
@@ -15,7 +16,7 @@ export class UpdateClientUseCase {
       },
     });
 
-    return clients;
+  return clients;
 
   }
 }

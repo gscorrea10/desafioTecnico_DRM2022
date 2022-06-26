@@ -3,12 +3,11 @@ import { DeleteClientUseCase } from "./deleteClientUseCase";
 
 export class DeleteClientController {
   async handle(req: Request, res: Response) {
-    const {id} = req.params;
-    const {name, adress, phone} = req.body;
+    const { id } = req.params;
 
     const deleteClientUseCase = new DeleteClientUseCase();
-    const result = await deleteClientUseCase.execute();
-   
-    return res.status(200).json(result);
+    await deleteClientUseCase.execute({ id });
+
+    return res.status(204).send();
   }
 }

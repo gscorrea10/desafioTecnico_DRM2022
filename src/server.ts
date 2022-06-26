@@ -1,41 +1,26 @@
-import express from "express";
+import "express-async-errors";
+import express, { NextFunction, Request, Response } from "express";
 import routes from "./modules/routes";
+import { AppError } from "./errors/AppError";
 
 const app = express();
 app.use(express.json());
 app.use(routes);
 
-const PORT = process.env.PORT || 3000;
-
-/*app.post('/clients', async (req, res) => {
-  const { name, adress, phone } = req.body;
-
-  const client = await prisma.client.create({
-    data: {
-      name,
-      adress,
-      phone
+app.use(
+  (err: Error, request: Request, response: Response, next: NextFunction) => {
+    if (err instanceof AppError) {
+      return response.status(err.statusCode).json({
+        status: "error",
+        message: err.message,
+      });
     }
-  });
+    return response.status(500).json({
+      status: "error",
+      message: `server error - ${err.message}`,
+    });
+  }
+);
 
-  return res.status(201).json({ data: client });
-});
-
-app.get('/clients', async (req, res) => {
-
-  const clients = await prisma.client.findMany
-  return clients.length > 0
-    ? res.status(200).json(clients)
-    : res.status(204).send();
-
-});
-
-app.put('/clients/:id', async (req, res) => {
-
-});
-
-app.delete('clients/:id', async (req, res) => {
-
-});*/
-
+const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => console.log("Server on!!"));

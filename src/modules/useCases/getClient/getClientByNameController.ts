@@ -1,7 +1,6 @@
 import { Request, Response } from "express";
 import { GetClientByNameUseCase } from "./getClientByNameUseCase";
 
-
 export class GetClientByNameController {
   async handle(req: Request, res: Response) {
 

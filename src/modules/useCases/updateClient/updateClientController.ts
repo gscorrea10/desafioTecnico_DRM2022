@@ -7,8 +7,8 @@ export class UpdateClientController {
     const {name, adress, phone} = req.body;
 
     const updateClientUseCase = new UpdateClientUseCase();
-    const result = await updateClientUseCase.execute({name,adress,phone});
+    const result = await updateClientUseCase.execute({id,name,adress,phone});
    
-    res.status(204).json(result);
+    res.status(202).json(result);
   }
 }
