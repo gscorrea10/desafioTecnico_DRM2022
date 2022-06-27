@@ -1,10 +1,9 @@
-import { Client } from "@prisma/client";
 import { prisma } from "../../../prisma";
-import { UpdateClientData} from "../../types/ClientData";
+import { UpdateClientData, ClientOutput} from "../../types/ClientData";
 
 export class UpdateClientUseCase {
   
-  async execute({ id, name, adress, phone }:  UpdateClientData):Promise<Client>{
+  async execute({ id, name, adress, phone }:  UpdateClientData):Promise<ClientOutput>{
     const clients = await prisma.client.update({
       where: {
         id,

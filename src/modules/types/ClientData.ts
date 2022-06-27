@@ -1,4 +1,4 @@
-export type UpdateClientData = {
+ type ClientData = {
 
   id: string;
   name: string;
@@ -7,9 +7,21 @@ export type UpdateClientData = {
 
 }
 
-export type CreateClientData = Omit<UpdateClientData, 'id'>
+export type CreateClientData = Omit<ClientData, 'id'>
+
+export type UpdateClientData = ClientData
+
 export type DeleteClientData = {
   id: string;
+}
+
+export type ClientOutput = {
+	id: string,
+	name: string,
+	adress: string,
+	phone: string,
+	created_at: Date,
+	updated_at: Date,
 }
 
   

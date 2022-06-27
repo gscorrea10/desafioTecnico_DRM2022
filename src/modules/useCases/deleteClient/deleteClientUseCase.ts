@@ -1,10 +1,9 @@
 import { prisma } from "../../../prisma";
-import { DeleteClientData } from "../../types/ClientData";
-import { Client } from "@prisma/client";
+import { DeleteClientData, ClientOutput } from "../../types/ClientData";
 
 export class DeleteClientUseCase {
 
-  async execute ({ id}:  DeleteClientData): Promise<Client> {
+  async execute ({ id}:  DeleteClientData): Promise<ClientOutput> {
     const clients = await prisma.client.delete({
       where: {
         id,
