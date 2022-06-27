@@ -29,4 +29,6 @@ To open the Prisma Studio (db visual editor)
 $ npx prisma studio
 ```
 
+If you have Insomnia Client on your computer, you can import the Insomnia Collection to it.
+
 
